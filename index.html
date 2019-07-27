@@ -1,0 +1,30 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>Acme Customers</h1>
+    <ul id='customerList'>
+    </ul>
+    <script>
+      let customers = [
+            { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
+            { id: 2, name: 'larry', isVIP: true, email: 'larry@gmail.com'},
+            { id: 4, name: 'shep', email: 'shep@gmail.com'},
+           ];
+      const customerList = document.querySelector('#customerList');
+
+      const render = ()=>{
+        const html = customers.map(customer =>{
+          return `
+            <li>
+              ${customer.name}
+              </li>
+          `
+        }).join('');
+        customerList.innerHTML = html;
+      }
+
+    render();
+    </script>
+  </body>
+</html>
