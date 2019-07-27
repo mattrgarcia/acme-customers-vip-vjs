@@ -3,8 +3,14 @@
   </head>
   <body>
     <h1>Acme Customers</h1>
-    <ul id='customerList'>
+    <form>
+      <input name='name'>Name</input>
+      <input name='email'>Email</input>
+      <input type='checkbox' name='vip'>Is VIP?</input>
+      <button id='createPerson'>Create</button>
 
+    </form>
+    <ul id='customerList'>
     </ul>
     <script>
       const customerList = document.querySelector('#customerList');
