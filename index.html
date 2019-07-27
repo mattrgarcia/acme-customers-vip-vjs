@@ -15,15 +15,21 @@
            ];
 
       customerList.addEventListener('click', (ev)=>{
-        console.log(ev.target.attributes);
+        if(ev.target.tagName === 'BUTTON'){
+        const idx = ([...ev.target.parentNode.parentNode.children].indexOf(ev.target.parentNode));
+        customers = customers.filter((customer, _idx)=>{
+          return _idx !== idx
+        });
+        render();
+      }
       });
 
       const render = ()=>{
-        const html = customers.map(customer =>{
+        const html = customers.map((customer,idx) =>{
           return `
-            <li>
+            <li data-id='${idx}'>
               ${customer.name} (${customer.email})
-              <button data-id=${customer.id}>Destroy</button>
+              <button>Destroy</button>
               </li>
           `
         }).join('');
