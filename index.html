@@ -3,17 +3,21 @@
   </head>
   <body>
     <h1>Acme Customers</h1>
-    <form>
+    <form id='customerForm'>
       <input name='name'>Name</input>
       <input name='email'>Email</input>
-      <input type='checkbox' name='vip'>Is VIP?</input>
-      <button id='createPerson'>Create</button>
+      <input type='checkbox' name='isVIP'>Is VIP?</input>
+      <button id='createCustomer'>Create</button>
 
     </form>
     <ul id='customerList'>
     </ul>
     <script>
       const customerList = document.querySelector('#customerList');
+      const customerForm = document.querySelector('#customerForm');
+      const createCustomer = document.querySelector('#createCustomer');
+      const nameInput = document.querySelector('[name="name"]');
+      const emailInput = document.querySelector('[name="email"]');
       let customers = [
             { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
             { id: 2, name: 'larry', isVIP: true, email: 'larry@gmail.com'},
@@ -30,6 +34,23 @@
       }
       });
 
+      nameInput.addEventListener('keyup', (ev)=>{
+
+      });
+
+      emailInput.addEventListener('keyup', (ev)=>{
+
+      });
+
+      customerForm.addEventListener('submit', (ev)=>{
+        ev.preventDefault();
+        customers.push({
+          name: nameInput.value,
+          email: emailInput.value,
+        });
+        render();
+      });
+
       const render = ()=>{
         const html = customers.map((customer,idx) =>{
           return `
@@ -41,6 +62,8 @@
         }).join('');
         customerList.innerHTML = html;
       }
+
+
 
     render();
     </script>
