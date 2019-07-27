@@ -4,20 +4,26 @@
   <body>
     <h1>Acme Customers</h1>
     <ul id='customerList'>
+
     </ul>
     <script>
+      const customerList = document.querySelector('#customerList');
       let customers = [
             { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
             { id: 2, name: 'larry', isVIP: true, email: 'larry@gmail.com'},
             { id: 4, name: 'shep', email: 'shep@gmail.com'},
            ];
-      const customerList = document.querySelector('#customerList');
+
+      customerList.addEventListener('click', (ev)=>{
+        console.log(ev.target.attributes);
+      });
 
       const render = ()=>{
         const html = customers.map(customer =>{
           return `
             <li>
-              ${customer.name}
+              ${customer.name} (${customer.email})
+              <button data-id=${customer.id}>Destroy</button>
               </li>
           `
         }).join('');
