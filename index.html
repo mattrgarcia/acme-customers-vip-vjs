@@ -6,7 +6,7 @@
     <form id='customerForm'>
       <input name='name'>Name</input>
       <input name='email'>Email</input>
-      <input type='checkbox' name='isVIP'>Is VIP?</input>
+      <input type='checkbox' name='isVip'>Is VIP?</input>
       <button id='createCustomer'>Create</button>
 
     </form>
@@ -18,6 +18,8 @@
       const createCustomer = document.querySelector('#createCustomer');
       const nameInput = document.querySelector('[name="name"]');
       const emailInput = document.querySelector('[name="email"]');
+      const isVipInput =  document.querySelector('[name="isVip"]');
+
       let customers = [
             { id: 1, name: 'moe', email: 'moe@gmail.com', isVIP: true},
             { id: 2, name: 'larry', isVIP: true, email: 'larry@gmail.com'},
@@ -47,7 +49,9 @@
         customers.push({
           name: nameInput.value,
           email: emailInput.value,
+          isVip: isVipInput.checked
         });
+        console.log(customers);
         render();
       });
 
